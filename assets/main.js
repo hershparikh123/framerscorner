@@ -27,20 +27,24 @@
   (function status() {
     var now = new Date(), d = now.getDay(), t = now.getHours() + now.getMinutes() / 60;
     var o = HOURS[d][0], c = HOURS[d][1], open = t >= o && t < c;
-    var text, shut = false;
+    var shut = false, brief, full;
 
+    /* the rail says only what you glance for; the menu has room for the rest */
     if (open) {
-      text = 'Open now · until ' + fmt(c);
+      brief = 'Open till ' + fmt(c);
+      full  = 'Open now · until ' + fmt(c);
     } else {
       shut = true;
-      text = t < o
+      brief = t < o ? 'Opens ' + fmt(o) : 'Closed';
+      full  = t < o
         ? 'Opens ' + fmt(o) + ' today'
         : 'Closed · opens ' + fmt(HOURS[(d + 1) % 7][0]) + ' ' + NAMES[(d + 1) % 7];
     }
 
-    ['statusText', 'statusTextMenu'].forEach(function (id) {
-      var el = document.getElementById(id); if (el) el.textContent = text;
-    });
+    var railText = document.getElementById('statusText');
+    var menuText = document.getElementById('statusTextMenu');
+    if (railText) railText.textContent = brief;
+    if (menuText) menuText.textContent = full;
     if (shut) ['dot', 'dotMenu'].forEach(function (id) {
       var el = document.getElementById(id); if (el) el.classList.add('dot--shut');
     });
@@ -68,8 +72,11 @@
 
       if (open) {
         panel.hidden = false;
-        /* let the browser see the hidden state before transitioning out of it */
-        requestAnimationFrame(function () { panel.classList.add('is-open'); });
+        /* flush layout so the transition has a start value to run from.
+           rAF would do it too, but rAF is throttled in background tabs and
+           the menu would unhide while staying invisible. */
+        void panel.offsetHeight;
+        panel.classList.add('is-open');
       } else {
         panel.classList.remove('is-open');
         var done = function () { if (!open) panel.hidden = true; };
@@ -82,7 +89,9 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && open) { set(false); burger.focus(); }
     });
-    window.matchMedia('(min-width:1121px)').addEventListener('change', function (e) {
+    /* must track the breakpoint where the burger disappears, or the menu
+       can be left open with no way to shut it */
+    window.matchMedia('(min-width:861px)').addEventListener('change', function (e) {
       if (e.matches) set(false);
     });
   })();
