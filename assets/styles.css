@@ -708,10 +708,11 @@ h2.display{
   .status{display:none}
   .rail__call{display:none}          /* the call bar covers this on phones */
 
-  .hero{height:280svh}
+  /* a longer runway — the teardown should unfold, not snap */
+  .hero{height:340svh}
   .hero__stick{
     display:flex;flex-direction:column;align-items:stretch;
-    padding:calc(var(--rail) + 2.4vh) 0 0;
+    padding:calc(var(--rail) + 2.2vh) 0 0;
   }
   .hero__copy{
     position:static;max-width:none;flex:0 0 auto;
@@ -720,15 +721,28 @@ h2.display{
   }
   /* the copy has said its piece by the time the frame starts opening —
      it steps back and hands the whole screen to the teardown */
-  .hero__eyebrow{margin-bottom:14px}
-  .hero h1{margin-bottom:16px}
-  .hero__sub{margin-bottom:20px}
-  .hero__stage{flex:1 1 auto;min-height:0;will-change:transform}
-  .stack{width:min(30vh,54vw)}
+  .hero__eyebrow{margin-bottom:12px}
+  .hero h1{font-size:clamp(1.9rem,7.2vw,2.7rem);margin-bottom:14px}
+  .hero__sub{font-size:.98rem;line-height:1.55;margin-bottom:18px}
+  /* the stage reserves the caption's strip, then the frame sizes itself to
+     whatever room is genuinely left — so it fits an SE as well as a Pro Max
+     instead of being cropped by viewport-unit guesswork */
+  .hero__stage{flex:1 1 auto;min-height:0;padding:18px 0 72px;will-change:transform}
+  .stack{width:auto;height:min(100%,36vh);aspect-ratio:3/4}
   .layer__label{display:none}
-  .readout{display:block}
-  .scrollcue{bottom:calc(12px + var(--safe-b))}
-  .scrollcue .spec{font-size:10px}
+
+  /* the caption owns the bottom edge outright — out of flow, so the frame
+     gets every pixel between the copy and it */
+  .readout{
+    display:block;position:absolute;left:0;right:0;
+    bottom:calc(15px + var(--safe-b));
+    height:52px;margin:0;padding:0 var(--gutter);
+    opacity:0;transition:opacity .35s ease;
+  }
+  .readout__item{position:absolute;left:var(--gutter);right:var(--gutter);top:0}
+  /* the cropped frame is the invitation to scroll; the cue was just clutter
+     stacked on top of the caption */
+  .scrollcue{display:none}
 
   .callbar{display:flex}
   body{padding-bottom:0}
@@ -771,7 +785,8 @@ h2.display{
   .hero__stick{display:grid;place-items:center;padding:0}
   .hero__copy{position:absolute;max-width:56vw;top:calc(var(--rail) + 4vh)}
   .hero__sub,.readout{display:none}
-  .stack{width:min(52vh,34vw)}
+  .hero__stage{padding-bottom:0}
+  .stack{width:min(52vh,34vw);height:auto}
   .scrollcue{display:none}
 }
 

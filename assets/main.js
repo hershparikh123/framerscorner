@@ -206,6 +206,7 @@
       if (!lift && copy && stage) {   /* rotated back to the wide layout — hand it all back */
         copy.style.opacity = copy.style.transform = copy.style.pointerEvents = '';
         stage.style.transform = '';
+        if (readout) readout.style.opacity = '';
       }
 
       /* pieces are mid-transform — clear, read, restore */
@@ -231,6 +232,8 @@
         copy.style.transform = 'translate3d(0,' + (-20 * f) + 'px,0)';
         copy.style.pointerEvents = f > 0.85 ? 'none' : '';
         stage.style.transform = 'translate3d(0,' + (-lift * f) + 'px,0)';
+        /* the caption arrives just after the frame starts moving */
+        if (readout) readout.style.opacity = String(Math.max(0, Math.min(1, (ease - 0.05) / 0.12)));
       }
 
       /* --- the frame comes apart --- */
