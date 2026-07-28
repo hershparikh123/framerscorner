@@ -1,0 +1,13 @@
+{
+  "name": "framers-corner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Framer's Corner — custom picture framing, Pine Brook NJ. Static site.",
+  "scripts": {
+    "dev": "serve . -l 3000",
+    "start": "serve . -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

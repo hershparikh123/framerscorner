@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E6E2D9">
+<title>Framer's Corner — Custom picture framing, Pine Brook NJ</title>
+<meta name="description" content="Hand-cut mats, joined corners and museum glass. Custom picture framing on Route 46 in Pine Brook, New Jersey.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Karla:ital,wght@0,300..700;1,300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<script>document.documentElement.className+=' js'</script>
+</head>
+<body>
+
+<!-- ══════════════ shop rail ══════════════ -->
+<header class="rail">
+  <a class="rail__mark" href="#top">Framer's Corner <span>&nbsp;Est. Pine Brook, NJ</span></a>
+
+  <nav class="rail__nav" aria-label="Sections">
+    <a href="#work">What we frame</a>
+    <a href="#how">Process</a>
+    <a href="#wall">The wall</a>
+    <a href="#shop">The shop</a>
+    <a href="#visit">Visit</a>
+  </nav>
+
+  <div class="status">
+    <span class="dot" id="dot"></span>
+    <span class="spec" id="statusText">Checking the shop hours</span>
+  </div>
+
+  <a class="rail__link rail__call" href="tel:+19738081911">Call the shop</a>
+
+  <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+    <span class="burger__box"><i></i><i></i></span>
+  </button>
+
+  <i class="rail__prog" id="prog" aria-hidden="true"></i>
+</header>
+
+<!-- ══════════════ mobile menu ══════════════ -->
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Site">
+    <a href="#work"><span class="spec">01</span>What we frame</a>
+    <a href="#how"><span class="spec">02</span>The process</a>
+    <a href="#wall"><span class="spec">03</span>A wall, arranged</a>
+    <a href="#shop"><span class="spec">04</span>The shop</a>
+    <a href="#visit"><span class="spec">05</span>Visit &amp; hours</a>
+  </nav>
+  <div class="menu__foot">
+    <div class="status status--menu">
+      <span class="dot" id="dotMenu"></span>
+      <span class="spec" id="statusTextMenu">Checking the shop hours</span>
+    </div>
+    <a class="btn btn--fill" href="tel:+19738081911">(973) 808-1911</a>
+    <a class="btn btn--line" href="https://maps.google.com/?q=22+US-46+Pine+Brook+NJ+07058" target="_blank" rel="noopener">Get directions</a>
+    <span class="spec menu__addr">22 US-46 West · Pine Brook, NJ 07058</span>
+  </div>
+</div>
+
+<!-- ══════════════ hero ══════════════ -->
+<section class="hero" id="top">
+  <div class="hero__stick">
+    <div class="hero__copy">
+      <span class="spec hero__eyebrow fade-up d1">Custom framing &nbsp;·&nbsp; 22 Route 46 West</span>
+      <h1>
+        <span class="line"><span>Anything worth keeping</span></span>
+        <span class="line"><span>is worth keeping <em>square.</em></span></span>
+      </h1>
+      <p class="hero__sub fade-up d2">Hand-cut mats, joined corners, glass that won't let the light bleach it. Bring the piece in and we build the frame around it.</p>
+      <div class="hero__cta fade-up d3">
+        <a class="btn btn--fill" href="#visit">Visit the shop</a>
+        <a class="btn btn--line" href="#work">See what we frame</a>
+      </div>
+    </div>
+
+    <!-- the signature: a finished frame that comes apart, layer by layer -->
+    <div class="hero__stage">
+      <div class="stack" id="stack" aria-hidden="true">
+        <div class="layer" data-layer="5">
+          <div class="moulding"><div class="moulding__inner"></div></div>
+          <div class="layer__label spec"><b>Moulding</b>Gilt, joined &amp; pinned</div>
+        </div>
+        <div class="layer" data-layer="4">
+          <div class="backing" style="position:absolute;inset:9%"><div class="backing__grid"></div></div>
+          <div class="layer__label spec"><b>Backing</b>Acid-free foam, sealed</div>
+        </div>
+        <div class="layer" data-layer="3">
+          <div class="art" style="position:absolute;inset:14%">
+            <svg viewBox="0 0 300 400" preserveAspectRatio="none">
+              <g fill="none" stroke="rgba(23,32,30,.22)" stroke-width="1.2">
+                <path d="M-10 300 C 70 240 120 300 190 250 S 300 210 320 240"/>
+                <path d="M-10 330 C 60 280 130 335 200 285 S 300 250 320 275"/>
+              </g>
+              <circle cx="212" cy="104" r="34" fill="rgba(251,248,242,.55)"/>
+              <path d="M0 400 L96 214 L168 400Z" fill="rgba(23,32,30,.18)"/>
+              <path d="M120 400 L214 246 L300 400Z" fill="rgba(23,32,30,.12)"/>
+            </svg>
+          </div>
+          <div class="layer__label spec"><b>Your piece</b>Hinged, never glued</div>
+        </div>
+        <div class="layer" data-layer="2">
+          <div class="mat-layer" style="position:absolute;inset:9%"><div class="mat-layer__win"></div></div>
+          <div class="layer__label spec"><b>Mat</b>8-ply rag, bevel cut</div>
+        </div>
+        <div class="layer" data-layer="1">
+          <div class="glass" style="position:absolute;inset:9%"></div>
+          <div class="layer__label spec"><b>Glazing</b>99% UV, non-glare</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- phones get the same call-outs, read one at a time under the stack -->
+    <div class="readout" id="readout" aria-hidden="true">
+      <span class="readout__item"><b>Glazing</b><i class="spec">99% UV, non-glare</i></span>
+      <span class="readout__item"><b>Mat</b><i class="spec">8-ply rag, bevel cut</i></span>
+      <span class="readout__item"><b>Your piece</b><i class="spec">Hinged, never glued</i></span>
+      <span class="readout__item"><b>Backing</b><i class="spec">Acid-free foam, sealed</i></span>
+      <span class="readout__item"><b>Moulding</b><i class="spec">Gilt, joined &amp; pinned</i></span>
+    </div>
+
+    <div class="scrollcue">
+      <span class="spec">Scroll — take it apart</span>
+      <span class="scrollcue__bar"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ corner samples ══════════════ -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="head rise">
+      <span class="spec">What comes through the door</span>
+      <h2 class="display">Bring us the thing you keep meaning to hang.</h2>
+      <p class="lead">Four brothers-in-arms of the wall: art, objects, mirrors, and the pieces that need a little rescuing first. Every one gets cut, joined and fitted here on Route 46 — nothing ships out.</p>
+    </div>
+
+    <div class="corners">
+      <article class="corner rise">
+        <span class="spec corner__no">01 / Gilt</span>
+        <div class="corner__chip">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Gilt moulding corner sample">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8A6A3C"/><stop offset=".35" stop-color="#E4CB9B"/>
+              <stop offset=".6" stop-color="#A57F49"/><stop offset="1" stop-color="#D6BA85"/></linearGradient></defs>
+            <path d="M14 186 L14 14 L186 14 L186 56 L56 56 L56 186 Z" fill="url(#g1)" stroke="rgba(23,32,30,.35)" stroke-width="1"/>
+            <path d="M28 172 L28 28 L172 28" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5"/>
+            <path d="M44 174 L44 44 L174 44" fill="none" stroke="rgba(23,32,30,.28)" stroke-width="1.5"/>
+            <path d="M14 14 L56 56" stroke="rgba(23,32,30,.4)" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <h3>Fine art &amp; prints</h3>
+        <p>Watercolours, oils, editions, the print you carried home from Rome. Conservation mounting so it comes back out unmarked.</p>
+      </article>
+
+      <article class="corner rise">
+        <span class="spec corner__no">02 / Walnut</span>
+        <div class="corner__chip">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Walnut moulding corner sample">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3E2A20"/><stop offset=".45" stop-color="#7A5540"/><stop offset="1" stop-color="#4A3226"/></linearGradient></defs>
+            <path d="M14 186 L14 14 L186 14 L186 60 L60 60 L60 186 Z" fill="url(#g2)" stroke="rgba(23,32,30,.4)"/>
+            <g stroke="rgba(232,214,190,.22)" stroke-width="1.2" fill="none">
+              <path d="M22 186 L22 22 L186 22"/><path d="M34 186 L34 34 L186 34"/><path d="M48 186 L48 48 L186 48"/>
+            </g>
+            <path d="M14 14 L60 60" stroke="rgba(23,32,30,.5)" fill="none"/>
+          </svg>
+        </div>
+        <h3>Shadow boxes</h3>
+        <p>Jerseys, medals, christening gowns, the first pair of shoes. Depth built to the object, stitched or pinned so it sits still.</p>
+      </article>
+
+      <article class="corner rise">
+        <span class="spec corner__no">03 / Silver</span>
+        <div class="corner__chip">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Silver moulding corner sample">
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8E9295"/><stop offset=".4" stop-color="#E3E6E6"/>
+              <stop offset=".7" stop-color="#9BA0A2"/><stop offset="1" stop-color="#CFD3D3"/></linearGradient></defs>
+            <path d="M14 186 L14 14 L186 14 L186 52 L52 52 L52 186 Z" fill="url(#g3)" stroke="rgba(23,32,30,.32)"/>
+            <path d="M20 180 L20 20 L180 20" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="2"/>
+            <path d="M42 178 L42 42 L178 42" fill="none" stroke="rgba(23,32,30,.25)" stroke-width="1.5"/>
+            <path d="M14 14 L52 52" stroke="rgba(23,32,30,.35)" fill="none"/>
+          </svg>
+        </div>
+        <h3>Mirrors &amp; glass</h3>
+        <p>Cut, bevelled and framed to your wall, with the hanging hardware rated well past the weight. We'll tell you where the stud is.</p>
+      </article>
+
+      <article class="corner rise">
+        <span class="spec corner__no">04 / Ebony</span>
+        <div class="corner__chip">
+          <svg viewBox="0 0 200 200" role="img" aria-label="Black moulding corner sample">
+            <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1B1F22"/><stop offset=".5" stop-color="#3A4046"/><stop offset="1" stop-color="#22262A"/></linearGradient></defs>
+            <path d="M14 186 L14 14 L186 14 L186 58 L58 58 L58 186 Z" fill="url(#g4)" stroke="rgba(23,32,30,.6)"/>
+            <path d="M26 186 L26 26 L186 26" fill="none" stroke="rgba(246,243,237,.25)" stroke-width="1.2"/>
+            <path d="M46 186 L46 46 L186 46" fill="none" stroke="rgba(164,86,106,.8)" stroke-width="2"/>
+            <path d="M14 14 L58 58" stroke="rgba(0,0,0,.5)" fill="none"/>
+          </svg>
+        </div>
+        <h3>Repair &amp; re-fit</h3>
+        <p>Yellowed mats, sagging tape, a corner that let go in the move. Often the frame is fine and only the inside needs replacing.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ quote band ══════════════ -->
+<section class="band" id="reviews">
+  <div class="band__field" id="bandField" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="#F6F3ED" stroke-width="2">
+        <path d="M40 660 L40 60 L640 60 L640 160 L140 160 L140 660 Z"/>
+        <path d="M300 620 L300 200 L760 200 L760 268 L368 268 L368 620 Z"/>
+        <path d="M560 700 L560 320 L1160 320 L1160 396 L636 396 L636 700 Z"/>
+        <path d="M820 140 L820 -60 L1240 -60"/>
+      </g>
+    </svg>
+  </div>
+  <div class="band__head rise">
+    <h2>The part we can't <em>put in the window.</em></h2>
+    <div class="score">
+      <b>5.0</b>
+      <span class="spec">★★★★★ &nbsp;23 Google reviews</span>
+    </div>
+  </div>
+
+  <div class="revs">
+    <div class="revs__track" id="revTrack" tabindex="0" role="region" aria-label="Customer reviews, scrollable">
+      <article class="rev">
+        <blockquote>“Jeff helped bring our vision to life and is so personable”</blockquote>
+        <p class="rev__by">Engagement photos</p>
+      </article>
+
+      <article class="rev">
+        <blockquote>“beautiful, high quality workmanship, reasonable prices”</blockquote>
+        <p class="rev__by">Longtime customer</p>
+      </article>
+
+      <article class="rev">
+        <blockquote>“I am over the moon at how both prints came out”</blockquote>
+        <p class="rev__by">Prints, re-matted</p>
+      </article>
+
+      <article class="rev">
+        <blockquote>“A wonderful local place to go for all your framing needs”</blockquote>
+        <p class="rev__by">Repeat customer</p>
+      </article>
+
+      <article class="rev">
+        <blockquote>“Friendly efficient service, good quality workmanship, reasonable prices”</blockquote>
+        <p class="rev__by">Google review</p>
+      </article>
+
+      <article class="rev">
+        <blockquote>“Have had 2 frames done. Extremely professional.”</blockquote>
+        <p class="rev__by">Two frames</p>
+      </article>
+    </div>
+
+    <div class="revs__ui">
+      <button class="arrow" id="revPrev" type="button" aria-label="Previous review">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="arrow" id="revNext" type="button" aria-label="Next review">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <span class="spec revs__count" id="revCount">01 / 06</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ process ══════════════ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="head rise">
+      <span class="spec">Start to wall · about one week</span>
+      <h2 class="display">Four steps, and only one of them is yours.</h2>
+      <p class="lead">No appointment, no design fee. Walk in with the piece — or a photo of the wall it's going on — and we'll work it out at the counter.</p>
+    </div>
+    <div class="steps rise">
+      <div class="step">
+        <span class="step__n">Step 01</span>
+        <h3>Bring it in</h3>
+        <p>Unwrapped is fine. If it's oversized, call first and we'll meet you at the door on the Route 46 side.</p>
+        <span class="spec step__meta">Walk-ins · Mon–Sat</span>
+      </div>
+      <div class="step">
+        <span class="step__n">Step 02</span>
+        <h3>Choose the corner</h3>
+        <p>We hold samples against the piece until one stops the conversation. Mat, moulding and glass, priced as we go.</p>
+        <span class="spec step__meta">Hundreds of mouldings</span>
+      </div>
+      <div class="step">
+        <span class="step__n">Step 03</span>
+        <h3>Cut and joined here</h3>
+        <p>Mats cut on the bevel, corners glued and pinned under clamp, everything hinged so it can come back out.</p>
+        <span class="spec step__meta">1&frac12;&Prime; typical rabbet</span>
+      </div>
+      <div class="step">
+        <span class="step__n">Step 04</span>
+        <h3>Pick it up</h3>
+        <p>Wired, bumpered and wrapped, with the hanging hardware in the bag. We'll call the day it's ready.</p>
+        <span class="spec step__meta">Approx. 7–10 days</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ gallery wall ══════════════ -->
+<section class="section wall" id="wall">
+  <div class="wrap">
+    <div class="head rise">
+      <span class="spec">Recently out the door</span>
+      <h2 class="display">A wall, arranged.</h2>
+      <p class="lead">Different mouldings, one hanging line. Mockups shown — swap in real shop photography before launch.</p>
+    </div>
+
+    <div class="wall__grid">
+      <figure class="piece f--gilt c1" data-speed="-0.05">
+        <div class="piece__frame"><div class="piece__mat"><div class="piece__art">
+          <svg viewBox="0 0 300 380">
+            <rect width="300" height="380" fill="#E7DCCB"/>
+            <path d="M0 262 C 70 214 132 268 202 224 S 300 190 300 214 L300 380 L0 380Z" fill="#8FBCB0"/>
+            <path d="M0 300 C 84 268 140 314 214 276 S 300 246 300 268 L300 380 L0 380Z" fill="#5E8C86"/>
+            <circle cx="222" cy="86" r="36" fill="#C9A9AC"/>
+          </svg>
+        </div></div></div>
+        <figcaption class="spec">Watercolour · 16 × 20 · gilt closed corner</figcaption>
+      </figure>
+
+      <figure class="piece f--walnut c2" data-speed="0.06">
+        <div class="piece__frame"><div class="piece__mat"><div class="piece__art">
+          <svg viewBox="0 0 420 300">
+            <rect width="420" height="300" fill="#F1EAE0"/>
+            <g fill="#A4566A"><rect x="40" y="60" width="90" height="180"/><rect x="150" y="110" width="52" height="130"/></g>
+            <g fill="#17201E"><rect x="228" y="86" width="34" height="154"/><rect x="284" y="132" width="96" height="108"/></g>
+            <rect y="240" width="420" height="6" fill="#B18F58"/>
+          </svg>
+        </div></div></div>
+        <figcaption class="spec">Silkscreen · 24 × 18 · walnut, 8-ply mat</figcaption>
+      </figure>
+
+      <figure class="piece f--black c3" data-speed="-0.1">
+        <div class="piece__frame"><div class="piece__mat"><div class="piece__art">
+          <svg viewBox="0 0 240 320">
+            <rect width="240" height="320" fill="#2A2F33"/>
+            <circle cx="120" cy="128" r="62" fill="none" stroke="#E7E2D8" stroke-width="2"/>
+            <circle cx="120" cy="128" r="30" fill="#8FBCB0"/>
+            <path d="M0 250 L240 250" stroke="#E7E2D8" stroke-width="1"/>
+            <path d="M56 250 L120 190 L184 250Z" fill="#A4566A"/>
+          </svg>
+        </div></div></div>
+        <figcaption class="spec">Photograph · 11 × 14 · ebony, non-glare</figcaption>
+      </figure>
+
+      <figure class="piece f--white c4" data-speed="0.09">
+        <div class="piece__frame"><div class="piece__mat"><div class="piece__art">
+          <svg viewBox="0 0 240 300">
+            <rect width="240" height="300" fill="#FBF8F2"/>
+            <path d="M30 260 Q 120 20 210 260" fill="none" stroke="#A4566A" stroke-width="3"/>
+            <path d="M60 260 Q 120 90 180 260" fill="none" stroke="#8FBCB0" stroke-width="3"/>
+            <rect x="28" y="258" width="184" height="3" fill="#17201E"/>
+          </svg>
+        </div></div></div>
+        <figcaption class="spec">Line drawing · 9 × 12 · white lacquer</figcaption>
+      </figure>
+
+      <figure class="piece f--gilt c5" data-speed="-0.07">
+        <div class="piece__frame"><div class="piece__mat"><div class="piece__art">
+          <svg viewBox="0 0 340 260">
+            <rect width="340" height="260" fill="#DCE6E1"/>
+            <path d="M0 180 L80 96 L150 168 L214 106 L340 200 L340 260 L0 260Z" fill="#5E8C86"/>
+            <path d="M0 214 L96 150 L182 208 L262 156 L340 218 L340 260 L0 260Z" fill="#17201E" opacity=".72"/>
+            <circle cx="270" cy="62" r="24" fill="#B18F58"/>
+          </svg>
+        </div></div></div>
+        <figcaption class="spec">Oil on board · 20 × 16 · gilt, spacer set</figcaption>
+      </figure>
+
+      <figure class="piece f--walnut c6" data-speed="0.04">
+        <div class="piece__frame"><div class="piece__mat"><div class="piece__art">
+          <svg viewBox="0 0 420 250">
+            <rect width="420" height="250" fill="#EDE3D4"/>
+            <g stroke="#7E3B4C" stroke-width="2" fill="none">
+              <path d="M20 200 C 110 120 150 210 230 140 S 380 70 404 118"/>
+              <path d="M20 226 C 118 156 162 236 244 176 S 384 116 404 156"/>
+            </g>
+            <rect x="300" y="34" width="86" height="60" fill="none" stroke="#17201E"/>
+            <rect x="316" y="50" width="54" height="28" fill="#8FBCB0"/>
+          </svg>
+        </div></div></div>
+        <figcaption class="spec">Map, hinged · 30 × 20 · walnut, museum glass</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ the shop ══════════════ -->
+<section class="section" id="shop">
+  <div class="wrap shop">
+    <div class="rise">
+      <span class="spec">The counter</span>
+      <h2 class="display">Two brothers, one saw, a lot of Saturdays.</h2>
+      <p class="lead">Andy and Jeff Turan have been cutting mats for Morris County families for more than three decades — long enough that people bring in the second half of a pair framed here in the nineties, and we still have the moulding.</p>
+      <p class="lead">You'll be handed samples by whoever owns the place. That's the whole pitch.</p>
+      <div class="facts">
+        <div class="fact rise"><b>30+</b><span class="spec">Years framing<br>in Morris County</span></div>
+        <div class="fact rise"><b>5.0</b><span class="spec">Google rating<br>23 reviews</span></div>
+        <div class="fact rise"><b>7&ndash;10</b><span class="spec">Days, typical<br>turnaround</span></div>
+      </div>
+    </div>
+    <figure class="signcard rise">
+      <div class="signcard__mat">
+        <div class="signboard" role="img" aria-label="The Framer's Corner shop sign">
+          <span class="signboard__the">The</span>
+          <span class="signboard__name">Framer's Corner</span>
+          <span class="signboard__stripe"></span>
+          <span class="signboard__sub">Custom Picture Framing</span>
+        </div>
+        <figcaption class="spec">The sign on Route 46 — look for the green stripe</figcaption>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════════ visit ══════════════ -->
+<section class="section visit" id="visit">
+  <div class="wrap">
+    <div class="visit__grid">
+      <div class="rise">
+        <h2 class="display">Route 46 west,<br>just past the light.</h2>
+        <address class="addr">22 US-46 West<br>Pine Brook, NJ 07058</address>
+        <a class="tel" href="tel:+19738081911">(973) 808-1911</a>
+        <div class="hero__cta" style="margin-top:32px">
+          <a class="btn btn--fill" href="https://maps.google.com/?q=22+US-46+Pine+Brook+NJ+07058" target="_blank" rel="noopener">Get directions</a>
+          <a class="btn btn--line" href="tel:+19738081911">Call about a piece</a>
+        </div>
+        <div class="map" id="map">
+          <div class="map__canvas" id="mapCanvas"></div>
+          <a class="map__open" href="https://www.google.com/maps/search/?api=1&query=Framer%27s+Corner+22+US-46+Pine+Brook+NJ+07058" target="_blank" rel="noopener">Open in Maps</a>
+          <span class="spec map__hint" id="mapHint">Click the map to zoom &amp; pan</span>
+          <button class="map__gate" id="mapGate" type="button" hidden>
+            <span class="spec">Tap to explore the map</span>
+          </button>
+          <div class="map__fallback">
+            <p><span class="spec" style="display:block;margin-bottom:10px">Map unavailable</span>
+            22 US-46 West, Pine Brook NJ 07058<br>
+            <a href="https://www.google.com/maps/search/?api=1&query=Framer%27s+Corner+22+US-46+Pine+Brook+NJ+07058" target="_blank" rel="noopener" style="color:var(--seaglass)">Open in Google Maps</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rise">
+        <span class="spec">Shop hours</span>
+        <table class="hours" id="hoursTable">
+          <tbody>
+            <tr data-days="1,2,3,4,5"><th>Mon &ndash; Fri</th><td>9 – 6</td></tr>
+            <tr data-days="6"><th>Saturday</th><td>10 – 6</td></tr>
+            <tr data-days="0"><th>Sunday</th><td>11 – 5</td></tr>
+          </tbody>
+        </table>
+        <p class="hours__note">Parking out front — pull up to the door if you're carrying something large.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span class="spec">Framer's Corner · 22 US-46 W, Pine Brook NJ · (973) 808-1911</span>
+  <span class="spec">Design mockup — not the shop's live site</span>
+  <a class="rail__link" href="#top">Back to the top</a>
+</footer>
+
+<!-- ══════════════ phones: the counter is always one tap away ══════════════ -->
+<div class="callbar" id="callbar" aria-hidden="true">
+  <a class="callbar__btn callbar__btn--fill" href="tel:+19738081911">Call the shop</a>
+  <a class="callbar__btn" href="https://maps.google.com/?q=22+US-46+Pine+Brook+NJ+07058" target="_blank" rel="noopener">Directions</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<script src="/assets/main.js" defer></script>
+</body>
+</html>
